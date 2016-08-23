@@ -54,7 +54,7 @@ class DayPickerViewPager extends ViewPager {
     private DayPickerPagerAdapter mDayPickerPagerAdapter;
 
     private float mInitialDownX, mInitialDownY;
-    private boolean mIsLongPressed = false;
+    private boolean mIsLongPressed = true;
 
     private CheckForLongPress mCheckForLongPress;
     private SelectedDate mTempSelectedDate;
@@ -233,7 +233,6 @@ class DayPickerViewPager extends ViewPager {
                 removeCallbacks(mCheckForLongPress);
             }
 
-            mIsLongPressed = false;
             mInitialDownX = -1;
             mInitialDownY = -1;
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
@@ -273,7 +272,6 @@ class DayPickerViewPager extends ViewPager {
                         Log.i(TAG, "CheckForLongPress Runnable Fired");
                     }
 
-                    mIsLongPressed = true;
                     mDayPickerPagerAdapter.onDateRangeSelectionStarted(mTempSelectedDate);
                 }
             }
@@ -305,7 +303,6 @@ class DayPickerViewPager extends ViewPager {
                 }
             }
 
-            mIsLongPressed = false;
             mInitialDownX = -1;
             mInitialDownY = -1;
             mScrollingDirection = NOT_SCROLLING;
